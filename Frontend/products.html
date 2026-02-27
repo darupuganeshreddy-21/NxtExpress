@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zepto - Browse Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        beige: {
+                            50: '#F9F8F4',
+                            100: '#FFF5E1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="animate-bg-gradient font-sans text-slate-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="relative bg-slate-950 px-4 py-2 text-center text-xs font-medium text-white sm:text-sm">
+        <p>Sign up and get 20% off to your first order. <a href="#" class="underline hover:text-slate-300">Sign Up Now</a></p>
+        <button class="absolute right-4 top-1/2 hidden -translate-y-1/2 text-slate-400 hover:text-white sm:block">
+            <i data-lucide="x" class="h-4 w-4"></i>
+        </button>
+    </div>
+
+    <!-- Main Navigation -->
+    <header class="sticky top-0 z-50 border-b bg-[#F9F8F4]/80 backdrop-blur-md">
+        <div class="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
+            <!-- Logo -->
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-2xl font-black tracking-tighter text-slate-950">NxtExpress</a>
+                
+                <!-- Desktop Nav Links -->
+                <nav class="hidden gap-6 text-sm font-medium md:flex">
+                    <a href="#" class="flex items-center gap-1 hover:text-slate-600">
+                        Shop <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                    </a>
+                    <a href="#" class="hover:text-slate-600">Most Wanted</a>
+                    <a href="#" class="hover:text-slate-600">New Arrival</a>
+                    <a href="#" class="hover:text-slate-600">Brands</a>
+                </nav>
+            </div>
+
+            <!-- Right Side Actions -->
+            <div class="flex items-center gap-4">
+                <div class="relative hidden w-64 lg:block">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
+                    <input 
+                        type="text"
+                        placeholder="Search for products..." 
+                        class="h-10 w-full rounded-full bg-white pl-10 text-sm border border-slate-200 focus:outline-none focus:ring-1 focus:ring-slate-950"
+                    />
+                </div>
+                <div class="flex items-center gap-2 text-slate-900">
+                    <button class="rounded-full p-2 hover:bg-slate-200/50 lg:hidden">
+                        <i data-lucide="search" class="h-5 w-5"></i>
+                    </button>
+                    <button class="rounded-full p-2 hover:bg-slate-200/50">
+                        <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                    </button>
+                    <button class="rounded-full p-2 hover:bg-slate-200/50">
+                        <i data-lucide="user" class="h-5 w-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 pb-20 pt-8 md:px-6">
+        
+        <!-- Breadcrumbs -->
+        <div class="mb-8 flex items-center gap-2 text-sm text-slate-500">
+            <a href="#" class="hover:text-slate-900">Home</a>
+            <i data-lucide="chevron-right" class="h-4 w-4"></i>
+            <span class="font-medium text-slate-900">Browse Products</span>
+        </div>
+
+        <div class="flex flex-col gap-8">
+            <div class="flex-1">
+                <!-- Sort & Count Bar -->
+                <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                    <h1 class="text-xl font-bold" id="results-count">Showing results...</h1>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm text-slate-500">Sort by:</span>
+                        <select class="h-10 rounded-md border-none bg-transparent text-sm font-medium focus:outline-none focus:ring-0">
+                            <option value="popular">Popularity</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div id="product-grid" class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <!-- Loading State -->
+                    <div class="col-span-full flex h-[400px] items-center justify-center">
+                        <i data-lucide="loader-2" class="h-8 w-8 animate-spin text-slate-300"></i>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
